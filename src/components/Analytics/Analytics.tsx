@@ -7,7 +7,7 @@ import axios from "axios";
 import { URL } from "@/constants/constants";
 import { Data } from "@/schemas/schemas";
 import Cookies from "js-cookie";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function Analytics() {
   const [analytisData, setAnalyticsData] = useState<Data[]>([]);
@@ -72,6 +72,18 @@ function Analytics() {
       <Suspense fallback={<div>Loading...</div>}>
         <Filter loading={loading} onFilterApply={onFilterApply} />
       </Suspense>
+      <button
+        onClick={() => {
+          signOut();
+          Cookies.remove("startDate");
+          Cookies.remove("endDate");
+          Cookies.remove("gender");
+          Cookies.remove("ageGroup");
+        }}
+        className="bg-red-500 text-white px-2 py-0.5 rounded mt-5 ml-2"
+      >
+        Logout
+      </button>
     </div>
   );
 }
