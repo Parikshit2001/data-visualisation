@@ -7,6 +7,7 @@ import axios from "axios";
 import { URL } from "@/constants/constants";
 import { Data } from "@/schemas/schemas";
 import Cookies from "js-cookie";
+import { signIn, useSession } from "next-auth/react";
 
 function Analytics() {
   const [analytisData, setAnalyticsData] = useState<Data[]>([]);
@@ -30,6 +31,29 @@ function Analytics() {
     Cookies.set("gender", gender, { expires: 7 });
     Cookies.set("ageGroup", ageGroup, { expires: 7 });
   };
+
+  const session = useSession();
+
+  if (session.status === "loading") {
+    return (
+      <div className="h-screen items-center bg-blue-100 w-full flex flex-col justify-center">
+        Loading...
+      </div>
+    );
+  }
+
+  if (session.status === "unauthenticated") {
+    return (
+      <div className="h-screen bg-blue-100 w-full flex flex-col items-center justify-center">
+        <button
+          className="bg-blue-500 text-white px-2 py-0.5 rounded"
+          onClick={() => signIn()}
+        >
+          SignIn
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
