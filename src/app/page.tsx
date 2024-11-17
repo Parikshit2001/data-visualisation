@@ -1,7 +1,12 @@
+import Analytics from "@/components/Analytics/Analytics";
 import React from "react";
 
 function page() {
-  return <div className="bg-black h-screen text-white">HI</div>;
+  return (
+    <div>
+      <Analytics />
+    </div>
+  );
 }
 
 export default page;

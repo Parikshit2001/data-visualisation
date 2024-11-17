@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Data, Query } from "./schemas";
+import { Data, Query } from "../../../schemas/schemas";
 
 export const getFilteredData = async (query: Query): Promise<Data[]> => {
   const data = await axios.get(process.env.SHEET_DATA_ENDPOINT as string);

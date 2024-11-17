@@ -1,6 +1,6 @@
 // app/api/data/features/route.js
 import { NextRequest, NextResponse } from "next/server";
-import { querySchema } from "../schemas";
+import { querySchema } from "@/schemas/schemas";
 import { z } from "zod";
 import { getFilteredData } from "../utils";
 
