@@ -24,7 +24,10 @@ function CookieReset() {
         Cookies.remove("gender");
         setReset(true);
       }}
-      className="px-2 py-0.5 rounded-lg text-white bg-blue-500"
+      className={`px-2 py-0.5 rounded-lg text-white ${
+        reset ? "bg-green-500" : "bg-blue-500"
+      }`}
+      disabled={reset}
     >
       {reset ? "Reset Successful" : "Reset Cookies"}
     </button>

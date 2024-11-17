@@ -28,13 +28,16 @@ function CopyURL({
   return (
     <div>
       <button
-        className="px-2 py-0.5 rounded-lg text-white bg-blue-500"
+        className={`px-2 py-0.5 rounded-lg text-white ${
+          copied ? "bg-green-500" : "bg-blue-500"
+        }`}
         onClick={() => {
           navigator.clipboard.writeText(
             `${process.env.NEXT_PUBLIC_URL}?startDate=${startDate}&endDate=${endDate}&ageGroup=${ageGroup}&gender=${gender}`
           );
           setCopied(true);
         }}
+        disabled={copied}
       >
         {copied ? "Copied" : "Your Custom URL"}
       </button>

@@ -36,7 +36,6 @@ function LineChart({
     analyticsData,
     featureIndex
   );
-  console.log({ uniqueDates, lineChartData });
   const options = {
     responsive: true,
     maintainAspectRatio: false,
