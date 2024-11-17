@@ -23,5 +23,10 @@ export const dataSchema = z.object({
   F: z.number().int().nonnegative(),
 });
 
+export const genderSchema = z.enum(["Male", "Female", "All"]);
+export const ageGroupSchema = z.enum(["15-25", ">25", "All"]);
+
 export type Query = z.infer<typeof querySchema>;
 export type Data = z.infer<typeof dataSchema>;
+export type Gender = z.infer<typeof genderSchema>;
+export type AgeGroup = z.infer<typeof ageGroupSchema>;

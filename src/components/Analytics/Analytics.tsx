@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useState } from "react";
 import BarChart from "./BarChart/BarChart";
 import LineChart from "./LineChart/LineChart";
-import Filter from "./Filter";
+import Filter from "./Filter/Filter";
 import axios from "axios";
 import { URL } from "@/constants/constants";
 import { Data } from "@/schemas/schemas";
@@ -26,21 +26,12 @@ function Analytics() {
     setLoading(false);
   };
 
-  useEffect(() => {
-    onFilterApply(
-      "2022-10-03T18:30:00.000Z",
-      "2022-10-30T18:30:00.000Z",
-      "All",
-      "Male"
-    );
-  }, []);
-
   return (
     <div>
       {loading ? (
         <div className="h-[50vh]">Loading...</div>
       ) : (
-        <div className="flex px-20 pb-20 pt-10 space-x-20 bg-white">
+        <div className="flex flex-col md:flex-row  px-20 pb-20 pt-10 md:space-x-5 space-y-10 md:space-y-0 bg-white">
           <BarChart
             featureIndex={featureIndex}
             setFeatureIndex={setFeatureIndex}
@@ -49,7 +40,9 @@ function Analytics() {
           <LineChart featureIndex={featureIndex} analyticsData={analytisData} />
         </div>
       )}
-      <Filter loading={loading} onFilterApply={onFilterApply} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Filter loading={loading} onFilterApply={onFilterApply} />
+      </Suspense>
     </div>
   );
 }

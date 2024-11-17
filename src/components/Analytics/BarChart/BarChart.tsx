@@ -73,7 +73,7 @@ function BarChart({
     },
   };
   return (
-    <div className="w-[40vw]">
+    <div className="w-full md:w-[50vw]">
       <Bar options={options} data={data} />
     </div>
   );

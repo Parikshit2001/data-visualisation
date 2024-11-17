@@ -2,6 +2,8 @@
 import { useFilter } from "@/hooks/useFilter";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import CopyURL from "./CopyURL";
+import { useEffect } from "react";
 
 const DATE_FORMAT = "dd/MM/yyyy";
 
@@ -27,6 +29,15 @@ function Filter({
     gender,
     setGender,
   } = useFilter();
+
+  useEffect(() => {
+    onFilterApply(
+      startDate.toISOString(),
+      endDate.toISOString(),
+      ageGroup,
+      gender
+    );
+  }, []);
 
   return (
     <div className="flex flex-col space-y-9 pl-2">
@@ -101,6 +112,14 @@ function Filter({
         >
           Apply Filter
         </button>
+      </div>
+      <div>
+        <CopyURL
+          startDate={startDate.toISOString()}
+          endDate={endDate.toISOString()}
+          ageGroup={ageGroup}
+          gender={gender}
+        />
       </div>
     </div>
   );

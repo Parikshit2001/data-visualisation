@@ -37,7 +37,10 @@ function LineChart({
     featureIndex
   );
   console.log({ uniqueDates, lineChartData });
-  const options = {};
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
   const data = {
     labels: uniqueDates,
     datasets: [
@@ -52,7 +55,7 @@ function LineChart({
   };
 
   return (
-    <div className="w-[40vw]">
+    <div className="w-full md:w-[40vw]">
       <Line options={options} data={data} />
     </div>
   );
