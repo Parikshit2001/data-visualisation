@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CopyURL from "./CopyURL";
 import { useEffect } from "react";
+import CookieReset from "./CookieReset";
 
 const DATE_FORMAT = "dd/MM/yyyy";
 
@@ -120,6 +121,9 @@ function Filter({
           ageGroup={ageGroup}
           gender={gender}
         />
+      </div>
+      <div>
+        <CookieReset />
       </div>
     </div>
   );

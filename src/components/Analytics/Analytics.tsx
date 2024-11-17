@@ -6,6 +6,7 @@ import Filter from "./Filter/Filter";
 import axios from "axios";
 import { URL } from "@/constants/constants";
 import { Data } from "@/schemas/schemas";
+import Cookies from "js-cookie";
 
 function Analytics() {
   const [analytisData, setAnalyticsData] = useState<Data[]>([]);
@@ -24,6 +25,10 @@ function Analytics() {
     );
     setAnalyticsData(data.data);
     setLoading(false);
+    Cookies.set("startDate", startDate, { expires: 7 });
+    Cookies.set("endDate", endDate, { expires: 7 });
+    Cookies.set("gender", gender, { expires: 7 });
+    Cookies.set("ageGroup", ageGroup, { expires: 7 });
   };
 
   return (
